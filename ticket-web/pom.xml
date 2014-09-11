@@ -31,14 +31,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-        <dependency>
-            <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-6.0</artifactId>
-            <version>3.0.1.Final</version>
-            <type>pom</type>
-            <scope>provided</scope>
-        </dependency>
-
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>ticket-jar</artifactId>
@@ -52,6 +44,12 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-6.0</artifactId>
+            <type>pom</type>
+        </dependency>
 
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>

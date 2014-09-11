@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.ejb.*;
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.UserTransaction;
 
@@ -18,7 +17,7 @@ import be.ticket.error.InvalidUserException;
 @TransactionManagement(TransactionManagementType.BEAN)
 public class UserService {
 	@EJB
-	UserDAO userDAO;
+    UserDAO userDAO;
 
     @Resource
     private UserTransaction tx;
