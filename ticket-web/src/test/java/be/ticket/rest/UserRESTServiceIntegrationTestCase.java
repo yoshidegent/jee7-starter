@@ -7,8 +7,10 @@ import org.jboss.resteasy.client.ProxyFactory;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class UserRESTServiceIntegrationTestCase {
 
 	private static UserRESTService client;
@@ -20,7 +22,7 @@ public class UserRESTServiceIntegrationTestCase {
 				"http://localhost:8080/ticket-web/resources");
 	}
 
-	@Test
+    @Test
 	public void testFindAllUsers() {
 		UserListWrapper result = client.findAllUsers();
 		assertNotNull("Find all on UserRESTService illegally returned null",

@@ -10,10 +10,12 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import be.ticket.entity.User;
 
+@Ignore
 public class UserWebServiceIntegrationTestCase {
 
 	private static UserWebService userWebService;
@@ -26,7 +28,7 @@ public class UserWebServiceIntegrationTestCase {
 		userWebService = service.getPort(UserWebService.class);
 	}
 
-	@Test
+    @Test
 	public void testFindAllUsers() {
 		List<User> result = userWebService.findAllUsers();
 		assertNotNull("Find all on UserWebService illegally returned null",
