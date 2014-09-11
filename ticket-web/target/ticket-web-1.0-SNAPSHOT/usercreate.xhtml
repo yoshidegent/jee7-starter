@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:comp="http://java.sun.com/jsf/composite/components">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="pageTitle">#{msg["page.usercreate.title"]}</ui:define>
+	<ui:define name="pageBody">
+		<h:form id="usercreate">
+			<comp:inputText id="firstName" field="firstName" label="#{msg['page.usercreate.form.user.firstname.label']}" value="#{userBean.user.firstName}" required="true" />
+			<comp:inputText id="lastName" field="lastName" label="#{msg['page.usercreate.form.user.lastname.label']}" value="#{userBean.user.lastName}" required="true" />
+			<comp:inputText id="email" field="email" label="#{msg['page.usercreate.form.user.email.label']}" value="#{userBean.user.email}" required="true" />
+			<comp:inputText id="userName" field="userName" label="#{msg['page.usercreate.form.user.username.label']}" value="#{userBean.user.userName}" listener="#{userManagerAction.validateUserName}" required="#{!userBean.managed}" disabled="#{userBean.managed}"/>
+			<h:commandButton action="#{userManagerAction.createUser}" value="#{msg['page.usercreate.form.user.save.label']}" rendered="#{!userBean.managed}"/>
+			<h:commandButton action="#{userManagerAction.updateUser}" value="#{msg['page.usercreate.form.user.update.label']}" rendered="#{userBean.managed}"/>
+			<comp:confirmCommand action="#{userManagerAction.cancel}" confirm="#{msg['page.usercreate.form.user.cancel.confirm']}" value="#{msg['page.usercreate.form.user.cancel.label']}" immediate="true"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

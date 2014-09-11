@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="ticket-ear:ear exploded">
+    <output-path>$PROJECT_DIR$/ticket-ear/target/ticket-ear-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ticket-ear/javaeeApplication/JavaEE" />
+      <element id="dir-copy" path="$PROJECT_DIR$/ticket-ear/src/main/application" />
+      <element id="archive" name="ticket-jar.jar">
+        <element id="artifact" artifact-name="ticket-jar:ejb exploded" />
+      </element>
+      <element id="archive" name="ticket-web.war">
+        <element id="artifact" artifact-name="ticket-web:war exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>

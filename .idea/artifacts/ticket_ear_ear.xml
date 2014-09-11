@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="ticket-ear:ear">
+    <output-path>$PROJECT_DIR$/ticket-ear/target</output-path>
+    <root id="archive" name="ticket-ear-1.0-SNAPSHOT.ear">
+      <element id="artifact" artifact-name="ticket-ear:ear exploded" />
+    </root>
+  </artifact>
+</component>

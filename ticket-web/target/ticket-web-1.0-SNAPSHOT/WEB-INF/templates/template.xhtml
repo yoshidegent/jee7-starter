@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:comp="http://java.sun.com/jsf/composite/components">
+
+<h:head>
+	<title><ui:insert name="pageTitle">#{msg["page.template.title"]}</ui:insert></title>
+	<h:outputScript name="jquery.js" />
+	<script type="text/javascript">
+	jQuery('document').ready(function() {
+		fadeOut();
+	});
+
+	function fadeOut() {
+		jQuery("#messages").delay(2000).fadeOut("slow");
+	}
+	</script>
+	<h:outputStylesheet library="styles" name="styles.css" />
+</h:head>
+
+<h:body>
+	<ui:insert name="messages">
+		<h:panelGroup id="growl">
+			<div id="messages" class="messages">
+				<h:messages infoClass="info" errorClass="error" warnClass="warn"
+					globalOnly="true" />
+			</div>
+		</h:panelGroup>
+	</ui:insert>
+	<div id="body">
+		<div id="panel">
+			<rich:panel>
+				<f:facet name="header">
+					<ui:insert name="pageTitle">
+						#{msg["page.template.title"]}
+					</ui:insert>
+				</f:facet>
+				<ui:insert name="pageBody">
+					<p>#{msg["page.template.body"]}</p>
+				</ui:insert>
+			</rich:panel>
+		</div>
+	</div>
+	<div id="footer">
+		<ui:insert name="pageFooter">
+			<i>#{msg["page.template.copyright"]}</i>
+		</ui:insert>
+	</div>
+</h:body>
+</html>

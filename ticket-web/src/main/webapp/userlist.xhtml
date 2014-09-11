@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:comp="http://java.sun.com/jsf/composite/components">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="pageTitle">#{msg["page.userlist.title"]}</ui:define>
+	<ui:define name="pageBody">
+		<h:form id="userlist">
+			<rich:dataTable id="userTable" var="user" value="#{userManagerAction.users}"
+				rendered="#{not userManagerAction.usersEmpty}">
+				<rich:column>
+					<f:facet name="header">#{msg["page.userlist.table.column.username.header"]}</f:facet>
+				#{user.userName}
+			</rich:column>
+				<rich:column>
+					<f:facet name="header">#{msg["page.userlist.table.column.firstname.header"]}</f:facet>
+				#{user.firstName}
+			</rich:column>
+				<rich:column>
+					<f:facet name="header">#{msg["page.userlist.table.column.lastname.header"]}</f:facet>
+				#{user.lastName}
+			</rich:column>
+				<rich:column>
+					<f:facet name="header">#{msg["page.userlist.table.column.email.header"]}</f:facet>
+				#{user.email}
+			</rich:column>
+				<rich:column>
+					<f:facet name="header">#{msg["page.userlist.table.column.actions.header"]}</f:facet>
+					<h:commandLink action="#{userManagerAction.editUser}"
+						value="#{msg['page.userlist.form.edit.label']}" />&nbsp;
+					<h:commandLink value="#{msg['page.userlist.form.delete.label']}" onclick="return confirm('#{msg['page.userlist.form.delete.confirm']}')">
+						<a4j:ajax listener="#{userManagerAction.deleteUser}" render="@form :growl" oncomplete="fadeOut();"/>
+					</h:commandLink>
+				</rich:column>
+			</rich:dataTable>
+			<h:panelGroup id="notFoundPanel" rendered="#{userManagerAction.usersEmpty}">
+				<p>
+					<h:outputText value="#{msg['page.userlist.notfound']}" />
+				</p>
+			</h:panelGroup>
+		</h:form>
+			<h:link outcome="index" value="#{msg['page.userlist.link.index']}" />
+			&nbsp;
+			<h:link outcome="usercreate"
+				value="#{msg['page.userlist.link.adduser']}" />
+	</ui:define>
+</ui:composition>
+
+</html>

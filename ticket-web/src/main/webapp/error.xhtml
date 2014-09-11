@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="pageTitle">#{msg["page.error.title"]}</ui:define>
+	<ui:define name="pageBody">
+		<p>#{msg["page.error.data"]}</p>
+		<p class="invalid">
+			<h:outputFormat value="#{msg['page.error.info']}">
+				<f:param value="#{message}" />
+			</h:outputFormat>
+		</p>
+		<p>
+			<a href="/ticket-web/index.html">#{msg['page.error.link.index']}</a>
+		</p>
+	</ui:define>
+</ui:composition>
+
+</html>
