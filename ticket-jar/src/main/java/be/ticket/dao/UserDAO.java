@@ -1,15 +1,13 @@
 package be.ticket.dao;
 
+import be.ticket.entity.User;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.ejb.LocalBean;
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
-import javax.inject.Named;
-
-import be.ticket.entity.User;
 
 @Stateless
 @LocalBean

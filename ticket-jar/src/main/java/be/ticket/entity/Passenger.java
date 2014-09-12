@@ -2,12 +2,15 @@ package be.ticket.entity;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Passenger {
+public class Passenger implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;

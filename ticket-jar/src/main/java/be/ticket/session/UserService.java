@@ -11,7 +11,7 @@ import be.ticket.dao.UserDAO;
 import be.ticket.entity.User;
 import be.ticket.error.InvalidUserException;
 
-@Stateless
+@Stateless(name = "AwesomeBean")
 @LocalBean
 @Named
 @TransactionManagement(TransactionManagementType.BEAN)
