@@ -1,15 +1,12 @@
 package be.ticket.dao;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
 
 public class LoggingInterceptor {
-    private Logger logger = LoggerFactory.getLogger(LoggingInterceptor.class);
-
+    @AroundInvoke
     public Object log(InvocationContext ic) {
-        logger.info("Intercepted call to " + ic.getMethod().getName());
+        System.out.println("Intercepted call to " + ic.getMethod().getName());
         try {
             return ic.proceed();
         } catch (Exception exception) {
