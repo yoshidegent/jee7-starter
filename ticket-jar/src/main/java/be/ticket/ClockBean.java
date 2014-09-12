@@ -5,28 +5,28 @@ import javax.ejb.*;
 import java.util.Collection;
 import java.util.Date;
 
-@Singleton
+//@Singleton
+//@Startup
 public class ClockBean {
+    public static final String CLOCK_KEY = "clock";
     private int count = 0;
 
     @Resource
     private TimerService timerService;
 
     @Schedule(second = "*", minute = "*", hour = "*", persistent = false)
-    public void printTime() {
+    public void printTheTime(Timer timer) {
         System.out.println("*****");
         System.out.println("TIME " + new Date());
         System.out.println("*****");
-        cancelTimerIfNecessary();
+        cancelTimerIfNecessary(timer);
+
     }
 
-    private void cancelTimerIfNecessary() {
+    private void cancelTimerIfNecessary(Timer timer) {
         count++;
         if(count == 10) {
-            Collection<Timer> timers = timerService.getTimers();
-            for (Timer timer : timers) {
-                timer.cancel();
-            }
+            timer.cancel();
         }
     }
 }
