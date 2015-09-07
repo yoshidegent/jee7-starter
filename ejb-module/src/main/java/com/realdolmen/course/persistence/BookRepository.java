@@ -1,4 +1,6 @@
-package com.realdolmen.course;
+package com.realdolmen.course.persistence;
+
+import com.realdolmen.course.domain.Book;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,7 +10,7 @@ import java.util.List;
 @Stateless
 public class BookRepository {
     @PersistenceContext
-    private EntityManager entityManager;
+    EntityManager entityManager;
 
     public List<Book> findAll() {
         return entityManager.createQuery("select b from Book b", Book.class).getResultList();

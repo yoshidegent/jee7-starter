@@ -1,10 +1,10 @@
-package com.realdolmen.course;
+package com.realdolmen.course.domain;
 
 import javax.persistence.*;
 
 @Entity
 public class Book {
-    enum Genre {
+    public enum Genre {
         fiction, fantasy, thriller, biography
     }
 
@@ -12,8 +12,9 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
+    @Basic(optional = false)
     private String title;
+
     private String author;
 
     @Enumerated(EnumType.STRING)

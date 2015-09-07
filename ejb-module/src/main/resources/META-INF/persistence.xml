@@ -9,7 +9,6 @@
         <jta-data-source>java:/MyDataSource</jta-data-source>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
     </persistence-unit>
 

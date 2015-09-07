@@ -1,4 +1,7 @@
-package com.realdolmen.course;
+package com.realdolmen.course.controller;
+
+import com.realdolmen.course.domain.Book;
+import com.realdolmen.course.persistence.BookRepository;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -9,7 +12,7 @@ import java.util.List;
 @RequestScoped
 public class BookController {
     @Inject
-    private BookRepository repository;
+    BookRepository repository;
 
     public List<Book> getAllBooks() {
         return repository.findAll();

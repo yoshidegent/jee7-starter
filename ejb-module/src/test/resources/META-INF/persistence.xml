@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+        version="2.1">
+
+    <persistence-unit name="MyTestPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!--
+            Due to JPA's reluctance to allow more flexible persistence.xml configurations, (which by the way is
+            unspeakably lame) we are forced to duplicate the entire context for the tests, strip out the managed stuff,
+            and manually list all entity classes. Alternatives do exist though.
+            Check with teacher for details on this subject, or wait for the wonderful world of Spring.
+        -->
+        <class>com.realdolmen.course.domain.Book</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+    </persistence-unit>
+</persistence>
