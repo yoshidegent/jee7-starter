@@ -79,6 +79,12 @@
 			<version>1.10.19</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-ejb-client-bom</artifactId>
+			<version>9.0.1.Final</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

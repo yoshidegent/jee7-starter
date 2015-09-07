@@ -1,9 +1,10 @@
 package com.realdolmen.course.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Book {
+public class Book implements Serializable {
     public enum Genre {
         fiction, fantasy, thriller, biography
     }

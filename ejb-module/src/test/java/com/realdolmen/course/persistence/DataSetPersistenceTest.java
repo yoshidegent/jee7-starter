@@ -1,4 +1,4 @@
-package com.realdolmen.course;
+package com.realdolmen.course.persistence;
 
 import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;

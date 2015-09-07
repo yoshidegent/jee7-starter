@@ -1,6 +1,5 @@
 package com.realdolmen.course.persistence;
 
-import com.realdolmen.course.DataSetPersistenceTest;
 import com.realdolmen.course.domain.Book;
 import org.junit.Before;
 import org.junit.Test;

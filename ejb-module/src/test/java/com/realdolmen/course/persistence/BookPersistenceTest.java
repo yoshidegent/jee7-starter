@@ -1,6 +1,7 @@
-package com.realdolmen.course.domain;
+package com.realdolmen.course.persistence;
 
-import com.realdolmen.course.DataSetPersistenceTest;
+import com.realdolmen.course.domain.Book;
+import com.realdolmen.course.persistence.DataSetPersistenceTest;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

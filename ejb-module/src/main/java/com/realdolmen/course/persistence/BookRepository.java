@@ -2,13 +2,15 @@ package com.realdolmen.course.persistence;
 
 import com.realdolmen.course.domain.Book;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
-public class BookRepository {
+@LocalBean
+public class BookRepository implements RemoteBookRepository {
     @PersistenceContext
     EntityManager entityManager;
 
