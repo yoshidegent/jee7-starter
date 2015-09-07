@@ -6,52 +6,73 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>be.ticket</groupId>
-	<artifactId>ticket</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<groupId>com.realdolmen</groupId>
+	<artifactId>jee-managed</artifactId>
+	<version>1.1</version>
     <packaging>pom</packaging>
-	<name>Online Ticket Reservation</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<modules>
-		<module>ticket-ear</module>
-		<module>ticket-jar</module>
-		<module>ticket-web</module>
+		<module>ear-module</module>
+		<module>ejb-module</module>
+		<module>web-module</module>
 	</modules>
 
 	<repositories>
 		<repository>
 			<id>repository.jboss.org</id>
 			<name>JBoss Repository</name>
-			<url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-		</repository>
-		<repository>
-			<id>jboss-public-thirdparty-repository</id>
-			<name>JBoss Thirdparty Repository</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public-thirdparty-releases</url>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.spec</groupId>
-                <artifactId>jboss-javaee-6.0</artifactId>
-                <version>3.0.1.Final</version>
-                <type>pom</type>
-                <scope>provided</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-7.0</artifactId>
+			<version>1.0.3.Final</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.3</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<ejbVersion>3.2</ejbVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
