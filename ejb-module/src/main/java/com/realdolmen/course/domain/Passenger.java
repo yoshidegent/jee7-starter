@@ -40,6 +40,7 @@ public class Passenger {
     private Integer age;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private PassengerType passengerType;
 
     @Temporal(TemporalType.TIMESTAMP)
