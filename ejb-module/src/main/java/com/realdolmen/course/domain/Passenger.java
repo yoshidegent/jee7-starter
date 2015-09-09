@@ -1,35 +1,23 @@
 package com.realdolmen.course.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by YDEAX41 on 9/09/2015.
  */
 @Entity
+@SecondaryTable(name = "passenger_meta")
 public class Passenger
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String ssn;
+    @EmbeddedId
+    private PassengerId id;
+
     private String firstName;
-    private String lastName;
+
+    @Column(table = "passenger_meta")
     private Integer frequentFlyerMiles;
-
-    public long getId() {
-        return id;
-    }
-
-    public String getSsn() {
-        return ssn;
-    }
-
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
+    @Column(table = "passenger_meta")
+    private byte[] picture;
 
     public String getFirstName() {
         return firstName;
@@ -37,14 +25,6 @@ public class Passenger
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public Integer getFrequentFlyerMiles() {
@@ -55,14 +35,19 @@ public class Passenger
         this.frequentFlyerMiles = frequentFlyerMiles;
     }
 
-    @Override
-    public String toString() {
-        return "Passenger{" +
-                "id=" + id +
-                ", ssn='" + ssn + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", frequentFlyerMiles=" + frequentFlyerMiles +
-                '}';
+    public PassengerId getId() {
+        return id;
+    }
+
+    public void setId(PassengerId id) {
+        this.id = id;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 }
