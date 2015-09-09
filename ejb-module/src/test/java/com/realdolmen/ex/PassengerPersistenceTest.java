@@ -1,4 +1,4 @@
-package com.realdolmen.ex2;
+package com.realdolmen.ex;
 
 import com.realdolmen.course.domain.Passenger;
 import com.realdolmen.course.persistence.DataSetPersistenceTest;
@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.Query;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -22,7 +24,10 @@ public class PassengerPersistenceTest extends DataSetPersistenceTest
         Passenger passenger = new Passenger();
         passenger.setFirstName("Yoshi");
         passenger.setLastName("Degent");
-        passenger.setSsn("");
+        passenger.setSsn("testSSN");
+        passenger.setDateOfBirth(new GregorianCalendar(1993, 10, 19).getTime());
+        passenger.setFlightTime(new GregorianCalendar(2015, 12, 31).getTime());
+        passenger.setPassengerType(Passenger.PassengerType.OCCASIONAL);
         passenger.setFrequentFlyerMiles(0);
         entityManager().persist(passenger);
 

@@ -1,23 +1,49 @@
 package com.realdolmen.course.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by YDEAX41 on 9/09/2015.
  */
 @Entity
-public class Passenger
-{
+public class Passenger {
+    public enum PassengerType {
+        OCCASIONAL,
+        REGULAR
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotNull
+    @Column(updatable = false)
     private String ssn;
+
+    @Column(length = 50)
     private String firstName;
+    @Column(length = 50)
     private String lastName;
+
     private Integer frequentFlyerMiles;
+
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    @Column(updatable = false)
+    private Date dateOfBirth;
+
+    @Transient
+    private Integer age;
+
+    @NotNull
+    private PassengerType passengerType;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date flightTime;
 
     public long getId() {
         return id;
@@ -55,14 +81,58 @@ public class Passenger
         this.frequentFlyerMiles = frequentFlyerMiles;
     }
 
-    @Override
-    public String toString() {
-        return "Passenger{" +
-                "id=" + id +
-                ", ssn='" + ssn + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", frequentFlyerMiles=" + frequentFlyerMiles +
-                '}';
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+        setAge(calculateAge(dateOfBirth));
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    private void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public PassengerType getPassengerType() {
+        return passengerType;
+    }
+
+    public void setPassengerType(PassengerType passengerType) {
+        this.passengerType = passengerType;
+    }
+
+    public Date getFlightTime() {
+        return flightTime;
+    }
+
+    public void setFlightTime(Date flightTime) {
+        this.flightTime = flightTime;
+    }
+
+    public Integer calculateAge(Date dateOfBirth) {
+        Calendar calendarBirth = Calendar.getInstance();
+        calendarBirth.setTime(dateOfBirth);
+        //setup calNow as today.
+        Calendar calNow = Calendar.getInstance();
+        calNow.setTime(new java.util.Date());
+        //calculate age in years.
+        int ageYr = (calNow.get(Calendar.YEAR) - calendarBirth.get(Calendar.YEAR));
+        // calculate additional age in months, possibly adjust years.
+        int ageMo = (calNow.get(Calendar.MONTH) - calendarBirth.get(Calendar.MONTH));
+
+        if (ageMo < 0) {
+            //adjust years by subtracting one
+            ageYr--;
+        }
+        return ageYr;
     }
 }
