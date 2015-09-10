@@ -1,20 +1,18 @@
 package com.realdolmen.course.domain;
 
 import javax.persistence.*;
+import javax.persistence.metamodel.ListAttribute;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by YDEAX41 on 9/09/2015.
  */
 @Entity
 public class Passenger {
-    public enum PassengerType {
-        OCCASIONAL,
-        REGULAR
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +43,15 @@ public class Passenger {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date flightTime;
+
+    @ElementCollection
+    private List<CreditCard> creditCard;
+
+    @Embedded
+    private Address address;
+
+    @ElementCollection
+    private List<String> preferences;
 
     public long getId() {
         return id;
@@ -117,6 +124,22 @@ public class Passenger {
 
     public void setFlightTime(Date flightTime) {
         this.flightTime = flightTime;
+    }
+
+    public List<CreditCard> getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(List<CreditCard> creditCard) {
+        this.creditCard = creditCard;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Integer calculateAge(Date dateOfBirth) {
