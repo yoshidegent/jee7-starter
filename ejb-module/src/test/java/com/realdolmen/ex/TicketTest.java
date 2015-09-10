@@ -17,7 +17,6 @@ import java.util.Date;
  */
 public class TicketTest extends DataSetPersistenceTest {
 
-
     private Ticket ticket;
 
     @Before
