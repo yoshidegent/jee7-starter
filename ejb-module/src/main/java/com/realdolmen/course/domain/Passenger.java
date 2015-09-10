@@ -53,6 +53,9 @@ public class Passenger {
     @ElementCollection
     private List<String> preferences;
 
+    @OneToMany
+    private List<Ticket> tickets;
+
     public long getId() {
         return id;
     }
@@ -140,6 +143,22 @@ public class Passenger {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<String> getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(List<String> preferences) {
+        this.preferences = preferences;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
     public Integer calculateAge(Date dateOfBirth) {

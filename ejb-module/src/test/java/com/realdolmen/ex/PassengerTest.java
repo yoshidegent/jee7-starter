@@ -8,16 +8,16 @@ import org.slf4j.LoggerFactory;
 
 import javax.persistence.Query;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
  * Created by YDEAX41 on 9/09/2015.
  */
-public class PassengerPersistenceTest extends DataSetPersistenceTest
+public class PassengerTest extends DataSetPersistenceTest
 {
-    static final Logger logger = LoggerFactory.getLogger(PassengerPersistenceTest.class);
+    static final Logger logger = LoggerFactory.getLogger(PassengerTest.class);
 
     @Test
     public void testPassengerPersists() throws Exception
@@ -30,6 +30,7 @@ public class PassengerPersistenceTest extends DataSetPersistenceTest
         passenger.setFlightTime(new GregorianCalendar(2015, 12, 31).getTime());
         passenger.setPassengerType(PassengerType.OCCASIONAL);
         passenger.setFrequentFlyerMiles(0);
+        passenger.setPreferences(new ArrayList<String>(Arrays.asList("pref1", "pref2", "pref3")));
 
         CreditCard creditCard = new CreditCard();
         creditCard.setType(CreditCardType.VISA);
