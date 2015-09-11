@@ -4,3 +4,8 @@ jdk:
   - oraclejdk8
 
 script: "mvn test -DdatabaseEngine=h2"
+
+notifications:
+  slack:
+    on_success: never
+    on_failure: never
