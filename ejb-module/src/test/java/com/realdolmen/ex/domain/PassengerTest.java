@@ -1,16 +1,13 @@
-package com.realdolmen.ex;
+package com.realdolmen.ex.domain;
 
-import com.realdolmen.course.domain.*;
 import com.realdolmen.course.persistence.DataSetPersistenceTest;
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by YDEAX41 on 9/09/2015.
@@ -19,10 +16,12 @@ public class PassengerTest extends DataSetPersistenceTest
 {
     static final Logger logger = LoggerFactory.getLogger(PassengerTest.class);
 
-    @Test
-    public void testPassengerPersists() throws Exception
+    private Passenger passenger;
+
+    @Before
+    public void before()
     {
-        Passenger passenger = new Passenger();
+        passenger = new Passenger();
         passenger.setFirstName("Yoshi");
         passenger.setLastName("Degent");
         passenger.setSsn("testSSN");
@@ -50,7 +49,11 @@ public class PassengerTest extends DataSetPersistenceTest
         address.setZipCode("0000");
 
         passenger.setAddress(address);
+    }
 
+    @Test
+    public void testPassengerPersists() throws Exception
+    {
         entityManager().persist(passenger);
 
         logger.info("New passenger id: " + passenger.getId());
@@ -75,5 +78,25 @@ public class PassengerTest extends DataSetPersistenceTest
         }
         else
             fail("List was empty.");
+    }
+
+    @Test
+    public void testDateLastUpdatedCallback()
+    {
+        entityManager().persist(passenger);
+        Date tempDate = new Date();
+
+        logger.info("PERSIST. Date new: " + tempDate);
+        logger.info("PERSIST. Date last updated: " + passenger.getDateLastUpdated());
+
+        assertTrue(passenger.getDateLastUpdated().before(tempDate));
+
+        passenger = entityManager().merge(passenger);
+        tempDate = new Date();
+
+        logger.info("UPDATE. Date new: " + tempDate);
+        logger.info("UPDATE. Date last updated: " + passenger.getDateLastUpdated());
+
+        assertTrue(passenger.getDateLastUpdated().before(tempDate));
     }
 }

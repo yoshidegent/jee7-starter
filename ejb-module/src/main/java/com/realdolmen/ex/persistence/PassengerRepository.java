@@ -1,6 +1,6 @@
-package com.realdolmen.course.persistence;
+package com.realdolmen.ex.persistence;
 
-import com.realdolmen.course.domain.Passenger;
+import com.realdolmen.ex.domain.Passenger;
 
 /**
  * Created by YDEAX41 on 10/09/2015.

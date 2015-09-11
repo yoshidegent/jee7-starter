@@ -1,15 +1,10 @@
-package com.realdolmen.ex;
+package com.realdolmen.ex.domain;
 
-import com.realdolmen.course.domain.DomesticFlight;
-import com.realdolmen.course.domain.Flight;
-import com.realdolmen.course.domain.InternationalFlight;
-import com.realdolmen.course.domain.Ticket;
 import com.realdolmen.course.persistence.DataSetPersistenceTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.persistence.Query;
 import java.util.Date;
 
 /**

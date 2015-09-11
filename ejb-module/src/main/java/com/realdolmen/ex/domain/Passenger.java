@@ -1,9 +1,7 @@
-package com.realdolmen.course.domain;
+package com.realdolmen.ex.domain;
 
 import javax.persistence.*;
-import javax.persistence.metamodel.ListAttribute;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -56,6 +54,8 @@ public class Passenger {
     @OneToMany
     private List<Ticket> tickets;
 
+    private Date dateLastUpdated;
+
     public long getId() {
         return id;
     }
@@ -102,15 +102,18 @@ public class Passenger {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-        setAge(calculateAge(dateOfBirth));
     }
 
     public Integer getAge() {
         return age;
     }
 
-    private void setAge(Integer age) {
-        this.age = age;
+    @PostLoad
+    @PostPersist
+    @PostUpdate
+    private void setAge()
+    {
+        this.age = calculateAge(this.dateOfBirth);
     }
 
     public PassengerType getPassengerType() {
@@ -161,6 +164,10 @@ public class Passenger {
         this.tickets = tickets;
     }
 
+    public Date getDateLastUpdated() {
+        return dateLastUpdated;
+    }
+
     public Integer calculateAge(Date dateOfBirth) {
         Calendar calendarBirth = Calendar.getInstance();
         calendarBirth.setTime(dateOfBirth);
@@ -177,5 +184,12 @@ public class Passenger {
             ageYr--;
         }
         return ageYr;
+    }
+
+    @PrePersist
+    @PreUpdate
+    public void dateLastUpdated()
+    {
+        this.dateLastUpdated = new Date();
     }
 }

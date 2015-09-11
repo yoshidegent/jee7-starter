@@ -1,4 +1,4 @@
-package com.realdolmen.course.domain;
+package com.realdolmen.ex.domain;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;

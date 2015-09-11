@@ -1,4 +1,4 @@
-package com.realdolmen.course.persistence;
+package com.realdolmen.ex.persistence;
 
 import com.realdolmen.course.domain.Book;
 

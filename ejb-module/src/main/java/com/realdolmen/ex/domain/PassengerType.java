@@ -1,4 +1,4 @@
-package com.realdolmen.course.domain;
+package com.realdolmen.ex.domain;
 
 /**
  * Created by YDEAX41 on 10/09/2015.
