@@ -4,12 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.io.Serializable;
 
 /**
  * Created by YDEAX41 on 10/09/2015.
  */
 @Entity
-public class Ticket {
+public class Ticket implements Serializable{
     @Id
     @GeneratedValue
     private Long id;

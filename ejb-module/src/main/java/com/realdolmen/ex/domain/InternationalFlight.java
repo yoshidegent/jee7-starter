@@ -1,12 +1,13 @@
 package com.realdolmen.ex.domain;
 
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 /**
  * Created by YDEAX41 on 10/09/2015.
  */
 @Entity
-public class InternationalFlight extends Flight {
+public class InternationalFlight extends Flight{
     private boolean blackListed;
 
     private String regulations;

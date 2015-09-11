@@ -2,6 +2,7 @@ package com.realdolmen.ex.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by YDEAX41 on 9/09/2015.
  */
 @Entity
-public class Passenger {
+public class Passenger implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

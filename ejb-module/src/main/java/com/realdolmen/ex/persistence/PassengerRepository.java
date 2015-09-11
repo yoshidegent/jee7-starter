@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by YDEAX41 on 10/09/2015.
  */
-public class PassengerRepository extends GenericRepository<Passenger> implements IPassengerRepository{
+public class PassengerRepository extends GenericRepository<Passenger> implements IPassengerRepository {
 
     public PassengerRepository() {
         super(Passenger.class);

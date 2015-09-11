@@ -1,13 +1,14 @@
 package com.realdolmen.ex.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by YDEAX41 on 10/09/2015.
  */
 @Entity
-public abstract class Flight extends AbstractEntity{
+public abstract class Flight extends AbstractEntity implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
