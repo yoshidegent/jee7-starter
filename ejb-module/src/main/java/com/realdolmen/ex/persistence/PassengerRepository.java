@@ -41,6 +41,5 @@ public class PassengerRepository extends GenericRepository<Passenger> implements
     public void deleteAll() {
         String queryString = "DELETE p FROM Passenger p";
         TypedQuery<String> query = entityManager.createQuery(queryString, String.class);
-        return query.getResultList();
     }
 }
