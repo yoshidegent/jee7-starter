@@ -1,23 +1,27 @@
 package com.realdolmen.ex.persistence;
 
+import com.realdolmen.course.persistence.DataSetPersistenceTest;
 import com.realdolmen.ex.domain.Address;
 import com.realdolmen.ex.domain.Passenger;
 import com.realdolmen.ex.domain.PassengerType;
-import com.realdolmen.course.persistence.DataSetPersistenceTest;
+import com.realdolmen.ex.domain.Ticket;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by YDEAX41 on 11/09/2015.
  */
 public class PassengerRepositoryTest extends DataSetPersistenceTest
 {
-
     private PassengerRepository passengerRepository;
-    private Passenger passenger;
+    private List<Passenger> passengerList;
+    private List<Ticket> tickets;
+
+    private final int LIST_SIZE = 10;
 
     @Before
     public void before()
@@ -25,60 +29,28 @@ public class PassengerRepositoryTest extends DataSetPersistenceTest
         passengerRepository = new PassengerRepository();
         passengerRepository.entityManager = entityManager();
 
-        passenger = new Passenger();
-        passenger.setFirstName("someFirstName");
-        passenger.setLastName("someLastName");
-        passenger.setPassengerType(PassengerType.OCCASIONAL);
-        passenger.setPreferences(new ArrayList<String>(Arrays.asList("pref1", "pref2", "pref3")));
-        passenger.setSsn("1111111");
+        for(int i=0; i<LIST_SIZE; i++) {
 
-        Address address = new Address();
+            Passenger passenger = new Passenger();
+            passenger.setFirstName("someFirstName");
+            passenger.setLastName("someLastName");
+            passenger.setPassengerType(PassengerType.OCCASIONAL);
+            passenger.setPreferences(new ArrayList<String>(Arrays.asList("pref1", "pref2", "pref3")));
+            passenger.setSsn("1111111");
+            passenger.setDateOfBirth(new Date());
 
-        address.setStreet1("street1Test");
-        address.setStreet2("street2Test");
-        address.setZipCode("zipcodeTest");
-        address.setCountry("countryTest");
-        address.setCity("testCity");
+            Address address = new Address();
 
-        passenger.setAddress(address);
-    }
+            address.setStreet1("street1Test");
+            address.setStreet2("street2Test");
+            address.setZipCode("zipcodeTest");
+            address.setCountry("countryTest");
+            address.setCity("testCity");
 
-    @Test
-    public void testPassengerPersists()
-    {
-        passenger = passengerRepository.create(passenger);
+            passenger.setAddress(address);
 
-        assertNotNull(passenger.getId());
-    }
-
-    @Test
-    public void testPassengerUpdates()
-    {
-        passenger = passengerRepository.create(passenger);
-
-        String firstNameBeforeUpdate = passenger.getFirstName();
-        passenger.setFirstName("someUpdatedFirstName");
-        passenger = passengerRepository.update(passenger);
-
-        assertNotEquals(passenger.getFirstName(), firstNameBeforeUpdate);
-    }
-
-    @Test
-    public void testPassengerCanBeDeleted()
-    {
-        passenger = passengerRepository.create(passenger);
-
-        passengerRepository.delete(passenger);
-        assertNull(passenger.getId());
-    }
-
-    @Test
-    public void testPassengerCanBeFoundById()
-    {
-        Long id = passenger.getId();
-
-        Passenger passengerToCompare = passengerRepository.findById(Passenger.class, id);
-
-        assertEquals(passenger, passengerToCompare);
+            passengerList.add(passenger);
+            passengerRepository.create(passenger);
+        }
     }
 }

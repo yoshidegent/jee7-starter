@@ -1,7 +1,6 @@
 package com.realdolmen.course.persistence;
 
 import com.realdolmen.course.domain.Book;
-import com.realdolmen.ex.persistence.RemoteBookRepository;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
