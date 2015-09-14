@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by YDEAX41 on 10/09/2015.
  */
-public class GenericRepository<T> implements IGenericRepository<T> {
+public abstract class GenericRepository<T> implements IGenericRepository<T> {
 
     protected Class<T> persistentClass;
 
@@ -35,12 +35,12 @@ public class GenericRepository<T> implements IGenericRepository<T> {
 
     @Override
     public T update(T t) {
-        return this.entityManager.merge(t);
+        return entityManager.merge(t);
     }
 
     @Override
     public void delete(T t) {
-        t = this.entityManager.merge(t);
+        t = entityManager.merge(t);
         entityManager.remove(t);
     }
 
@@ -54,5 +54,14 @@ public class GenericRepository<T> implements IGenericRepository<T> {
         TypedQuery<T> query = entityManager.createQuery(queryString, persistentClass);
 
         return query.getResultList();
+    }
+
+    public boolean checkEntityManagerIsNull()
+    {
+        return entityManager != null;
+    }
+
+    public void setEntityManager(EntityManager entityMAnager) {
+        this.entityManager = entityMAnager;
     }
 }

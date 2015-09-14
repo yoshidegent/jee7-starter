@@ -1,6 +1,7 @@
 package com.realdolmen.course.domain;
 
-import javax.persistence.*;
+import javax.
+        persistence.*;
 import java.io.Serializable;
 
 @Entity

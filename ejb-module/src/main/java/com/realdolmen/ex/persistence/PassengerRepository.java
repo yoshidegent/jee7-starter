@@ -32,7 +32,7 @@ public class PassengerRepository extends GenericRepository<Passenger> implements
 
     @Override
     public List<Ticket> findTicketsByPassengerId(Long passengerId) {
-        String queryString = "SELECT p.tickets FROM Passenger p";
+        String queryString = "SELECT p.ticketList FROM Passenger p";
         TypedQuery<Ticket> query = entityManager.createQuery(queryString, Ticket.class);
         return query.getResultList();
     }

@@ -89,4 +89,12 @@ public class PassengerRepositoryCrudTest extends DataSetPersistenceTest
         assertEquals(passenger, passengerToCompare);
     }
 
+    @Test
+    @Ignore
+    public void testAllPassengersCanBeFound()
+    {
+        //TODO: To be implemented
+        fail("To be implemented");
+    }
+
 }

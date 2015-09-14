@@ -40,7 +40,7 @@ public class PassengerTest extends DataSetPersistenceTest
         List<CreditCard> creditCards = new ArrayList<>();
         creditCards.add(creditCard);
 
-        passenger.setCreditCard(creditCards);
+        passenger.setCreditCardList(creditCards);
 
         Address address = new Address();
         address.setStreet1("Some street 1");

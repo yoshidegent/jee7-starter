@@ -3,6 +3,7 @@ package com.realdolmen.ex.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +45,7 @@ public class Passenger implements Serializable{
     private Date flightTime;
 
     @ElementCollection
-    private List<CreditCard> creditCard;
+    private List<CreditCard> creditCardList;
 
     @Embedded
     private Address address;
@@ -53,7 +54,7 @@ public class Passenger implements Serializable{
     private List<String> preferences;
 
     @OneToMany
-    private List<Ticket> tickets;
+    private List<Ticket> ticketList;
 
     private Date dateLastUpdated;
 
@@ -93,7 +94,7 @@ public class Passenger implements Serializable{
         this.frequentFlyerMiles = frequentFlyerMiles;
     }
 
-    public void setId(long id) {
+    private void setId(long id) {
         this.id = id;
     }
 
@@ -133,12 +134,14 @@ public class Passenger implements Serializable{
         this.flightTime = flightTime;
     }
 
-    public List<CreditCard> getCreditCard() {
-        return creditCard;
+    public List<CreditCard> getCreditCardList() {
+        if(creditCardList == null)
+            creditCardList = new ArrayList<>();
+        return creditCardList;
     }
 
-    public void setCreditCard(List<CreditCard> creditCard) {
-        this.creditCard = creditCard;
+    public void setCreditCardList(List<CreditCard> creditCard) {
+        this.creditCardList = creditCard;
     }
 
     public Address getAddress() {
@@ -150,6 +153,8 @@ public class Passenger implements Serializable{
     }
 
     public List<String> getPreferences() {
+        if(preferences == null)
+            preferences = new ArrayList<>();
         return preferences;
     }
 
@@ -157,12 +162,14 @@ public class Passenger implements Serializable{
         this.preferences = preferences;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public List<Ticket> getTicketList() {
+        if(ticketList == null)
+            ticketList = new ArrayList<>();
+        return ticketList;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setTicketList(List<Ticket> tickets) {
+        this.ticketList = tickets;
     }
 
     public Date getDateLastUpdated() {

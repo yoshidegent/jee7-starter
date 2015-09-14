@@ -1,8 +1,12 @@
 package com.realdolmen.ex.ejb;
 
 import com.realdolmen.course.integration.RemoteBookRepositoryTest;
-import com.realdolmen.course.persistence.RemoteBookRepository;
 import com.realdolmen.ex.domain.*;
+import com.realdolmen.ex.ejb.interfaces.RemotePassengerEJB;
+import com.realdolmen.ex.persistence.GenericRepository;
+import com.realdolmen.ex.persistence.PassengerRepository;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -16,11 +20,12 @@ import java.util.List;
  * Created by YDEAX41 on 11/09/2015.
  */
 public class PassengerEjbTest extends RemoteBookRepositoryTest{
-    private static PassengerEJB passengerEJB;
+
+    private static RemotePassengerEJB passengerEJB;
     private static Passenger passenger;
 
-    @BeforeClass
-    public static void before()
+    @Before
+    public void before()
     {
         passenger = new Passenger();
         passenger.setFirstName("Yoshi");
@@ -41,7 +46,7 @@ public class PassengerEjbTest extends RemoteBookRepositoryTest{
         List<CreditCard> creditCards = new ArrayList<>();
         creditCards.add(creditCard);
 
-        passenger.setCreditCard(creditCards);
+        passenger.setCreditCardList(creditCards);
 
         Address address = new Address();
         address.setStreet1("Some street 1");
@@ -53,14 +58,12 @@ public class PassengerEjbTest extends RemoteBookRepositoryTest{
     }
 
     @Test
-    public void testPassengerCreates()
+    @Ignore
+    public void testPassengerCreates() throws Exception
     {
-        try {
-            passengerEJB = lookup("java:global/ear-module-1.1/ejb-module-1.1/PassengerEJB!com.realdolmen.ex.ejb.interfaces.RemotePassengerEJB");
-            passenger = passengerEJB.createPassenger(passenger);
-            assertNotNull(passenger.getId());
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
+        passengerEJB = lookup("ear-module-1.1/ejb-module-1.1/PassengerEJB!com.realdolmen.ex.ejb.interfaces.RemotePassengerEJB");
+        passengerEJB.setEntityManager(entityManager());
+        passenger = passengerEJB.createPassenger(passenger);
+        assertNotNull(passenger.getId());
     }
 }
