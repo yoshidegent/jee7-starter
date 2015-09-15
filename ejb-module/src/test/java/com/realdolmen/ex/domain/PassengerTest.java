@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class PassengerTest extends DataSetPersistenceTest
 {
-    static final Logger logger = LoggerFactory.getLogger(PassengerTest.class);
+    static final Logger LOG = LoggerFactory.getLogger(PassengerTest.class);
 
     private Passenger passenger;
 
@@ -56,7 +56,7 @@ public class PassengerTest extends DataSetPersistenceTest
     {
         entityManager().persist(passenger);
 
-        logger.info("New passenger id: " + passenger.getId());
+        LOG.info("New passenger id: " + passenger.getId());
 
         org.junit.Assert.assertNotNull(passenger.getId());
     }
@@ -72,7 +72,7 @@ public class PassengerTest extends DataSetPersistenceTest
         {
             for(Object passenger : resultList)
             {
-                logger.info(passenger.toString());
+                LOG.info(passenger.toString());
             }
             assertTrue(resultList.get(0) instanceof Passenger);
         }
@@ -86,16 +86,16 @@ public class PassengerTest extends DataSetPersistenceTest
         entityManager().persist(passenger);
         Date tempDate = new Date();
 
-        logger.info("PERSIST. Date new: " + tempDate);
-        logger.info("PERSIST. Date last updated: " + passenger.getDateLastUpdated());
+        LOG.info("PERSIST. Date new: " + tempDate);
+        LOG.info("PERSIST. Date last updated: " + passenger.getDateLastUpdated());
 
         assertTrue(passenger.getDateLastUpdated().before(tempDate));
 
         passenger = entityManager().merge(passenger);
         tempDate = new Date();
 
-        logger.info("UPDATE. Date new: " + tempDate);
-        logger.info("UPDATE. Date last updated: " + passenger.getDateLastUpdated());
+        LOG.info("UPDATE. Date new: " + tempDate);
+        LOG.info("UPDATE. Date last updated: " + passenger.getDateLastUpdated());
 
         assertTrue(passenger.getDateLastUpdated().before(tempDate));
     }

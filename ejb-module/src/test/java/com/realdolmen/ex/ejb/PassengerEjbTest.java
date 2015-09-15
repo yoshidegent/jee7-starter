@@ -9,7 +9,10 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.ejb.EJB;
 import javax.naming.NamingException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,8 +24,12 @@ import java.util.List;
  */
 public class PassengerEjbTest extends RemoteBookRepositoryTest{
 
-    private static RemotePassengerEJB passengerEJB;
-    private static Passenger passenger;
+    static final Logger LOG = LoggerFactory.getLogger(PassengerTest.class);
+
+    @EJB
+    private RemotePassengerEJB passengerEJB;
+
+    private Passenger passenger;
 
     @Before
     public void before()
@@ -58,11 +65,10 @@ public class PassengerEjbTest extends RemoteBookRepositoryTest{
     }
 
     @Test
-    @Ignore
     public void testPassengerCreates() throws Exception
     {
         passengerEJB = lookup("ear-module-1.1/ejb-module-1.1/PassengerEJB!com.realdolmen.ex.ejb.interfaces.RemotePassengerEJB");
-        passengerEJB.setEntityManager(entityManager());
+       // passengerEJB.setEntityManager(entityManager());
         passenger = passengerEJB.createPassenger(passenger);
         assertNotNull(passenger.getId());
     }

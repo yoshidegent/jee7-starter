@@ -13,5 +13,4 @@ public interface RemotePassengerEJB {
     Passenger createPassenger(Passenger passenger);
     void deletePassenger(Passenger passenger);
     Passenger updatePassenger(Passenger passenger);
-    void setEntityManager(EntityManager entityManager);
 }
