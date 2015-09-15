@@ -33,9 +33,8 @@ public class TicketMDB implements MessageListener {
 
         try {
             String lines[] = textMessage.getText().split("\\r?\\n");
-            for(int i=0; i<lines.length; i++)
-            {
-                List<String> stringList = Arrays.asList(lines[i].split(","));
+            for (String line : lines) {
+                List<String> stringList = Arrays.asList(line.split(","));
 
                 String ticketIdString = stringList.get(0);
                 String ticketPriceString = stringList.get(1);
@@ -45,26 +44,19 @@ public class TicketMDB implements MessageListener {
                 Long ticketId;
                 double ticketPrice;
 
-                try
-                {
+                try {
                     ticketId = Long.parseLong(ticketIdString);
-                }
-                catch (NumberFormatException nfe)
-                {
+                } catch (NumberFormatException nfe) {
                     ticketId = null;
                 }
 
-                try
-                {
+                try {
                     ticketPrice = Double.parseDouble(ticketPriceString);
-                }
-                catch (NumberFormatException nfe)
-                {
+                } catch (NumberFormatException nfe) {
                     ticketPrice = 0;
                 }
 
-                if(stringList.size() == 3)
-                {
+                if (stringList.size() == 3) {
                     //TODO: implement a message with 3 columns
                 }
 

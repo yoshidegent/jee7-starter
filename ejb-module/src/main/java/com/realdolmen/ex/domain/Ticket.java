@@ -14,17 +14,6 @@ public class Ticket implements Serializable{
     @OneToOne
     private Flight flight;
 
-    public void setPrice(Double price) {
-        if(price < 0)
-            this.price = 0;
-        else
-            this.price = price;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
     public Long getId() {
         return id;
     }
@@ -42,6 +31,13 @@ public class Ticket implements Serializable{
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if(price < 0)
+            this.price = 0;
+        else
+            this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }
