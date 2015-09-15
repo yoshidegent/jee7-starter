@@ -1,18 +1,12 @@
 package com.realdolmen.ex.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by YDEAX41 on 10/09/2015.
- */
 @Entity
 public class Ticket implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private double price;
@@ -41,5 +35,13 @@ public class Ticket implements Serializable{
 
     public Flight getFlight() {
         return flight;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

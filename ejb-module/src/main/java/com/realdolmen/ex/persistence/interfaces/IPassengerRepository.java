@@ -1,6 +1,5 @@
 package com.realdolmen.ex.persistence.interfaces;
 
-import com.realdolmen.ex.domain.Passenger;
 import com.realdolmen.ex.domain.Ticket;
 
 import javax.ejb.Remote;

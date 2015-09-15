@@ -4,17 +4,14 @@ import com.realdolmen.ex.domain.Passenger;
 import com.realdolmen.ex.domain.Ticket;
 import com.realdolmen.ex.persistence.interfaces.IPassengerRepository;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by YDEAX41 on 10/09/2015.
- */
+@Stateless
+@LocalBean
 public class PassengerRepository extends GenericRepository<Passenger> implements IPassengerRepository {
-
-    public PassengerRepository() {
-        super(Passenger.class);
-    }
 
     @Override
     public List<String> findAllLastNames() {

@@ -84,7 +84,7 @@ public class PassengerRepositoryCrudTest extends DataSetPersistenceTest
         //TODO: test still failing
         Long id = passenger.getId();
 
-        Passenger passengerToCompare = passengerRepository.findById(id);
+        Passenger passengerToCompare = passengerRepository.findById(Passenger.class, id);
 
         assertEquals(passenger, passengerToCompare);
     }
@@ -96,5 +96,4 @@ public class PassengerRepositoryCrudTest extends DataSetPersistenceTest
         //TODO: To be implemented
         fail("To be implemented");
     }
-
 }

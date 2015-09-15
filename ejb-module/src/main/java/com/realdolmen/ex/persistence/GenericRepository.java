@@ -2,21 +2,15 @@ package com.realdolmen.ex.persistence;
 
 import com.realdolmen.ex.persistence.interfaces.IGenericRepository;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by YDEAX41 on 10/09/2015.
- */
+@LocalBean
 public abstract class GenericRepository<T> implements IGenericRepository<T> {
-
-    protected Class<T> persistentClass;
-
-    public GenericRepository(Class<T> persistentClass) {
-        this.persistentClass = persistentClass;
-    }
 
     @PersistenceContext
     protected EntityManager entityManager;
@@ -25,11 +19,12 @@ public abstract class GenericRepository<T> implements IGenericRepository<T> {
     public T create(T t)
     {
         entityManager.persist(t);
+        entityManager.flush();
         return t;
     }
 
     @Override
-    public T findById(Long id) {
+    public T findById(Class<T> persistentClass, Long id) {
         return entityManager.find(persistentClass, id);
     }
 
@@ -49,7 +44,7 @@ public abstract class GenericRepository<T> implements IGenericRepository<T> {
     }
 
     @Override
-    public List<T> findAll() {
+    public List<T> findAll(Class<T> persistentClass) {
         String queryString = "Select t from " + persistentClass.getSimpleName() + " t";
         TypedQuery<T> query = entityManager.createQuery(queryString, persistentClass);
 

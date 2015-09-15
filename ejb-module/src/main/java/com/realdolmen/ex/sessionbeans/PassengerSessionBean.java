@@ -45,7 +45,7 @@ public class PassengerSessionBean {
 
     public void addTicketToPassenger(Ticket ticket)
     {
-        TicketRepository ticketRepository = new TicketRepository(Ticket.class);
+        TicketRepository ticketRepository = new TicketRepository();
         ticketRepository.create(ticket);
         passenger.getTicketList().add(ticket);
     }

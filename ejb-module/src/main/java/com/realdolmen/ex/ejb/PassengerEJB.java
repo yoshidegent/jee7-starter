@@ -21,7 +21,7 @@ public class PassengerEJB implements RemotePassengerEJB{
     public List<Passenger> findPassengers() {
         PassengerRepository passengerRepository = this.getRepo();
         if(!passengerRepository.checkEntityManagerIsNull())
-            return passengerRepository.findAll();
+            return passengerRepository.findAll(Passenger.class);
         else
             return null;
     }
@@ -30,7 +30,7 @@ public class PassengerEJB implements RemotePassengerEJB{
     public Passenger findPassenger(Long id) {
         PassengerRepository passengerRepository = this.getRepo();
         if(!passengerRepository.checkEntityManagerIsNull())
-            return passengerRepository.findById(id);
+            return passengerRepository.findById(Passenger.class, id);
         else
             return null;
     }
