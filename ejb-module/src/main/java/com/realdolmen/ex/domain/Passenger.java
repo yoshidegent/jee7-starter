@@ -29,7 +29,7 @@ public class Passenger implements Serializable{
 
     private Integer frequentFlyerMiles;
 
-    @NotNull
+    //@NotNull
     @Temporal(TemporalType.DATE)
     @Column(updatable = false)
     private Date dateOfBirth;
@@ -37,7 +37,7 @@ public class Passenger implements Serializable{
     @Transient
     private Integer age;
 
-    @NotNull
+    //@NotNull
     @Enumerated(EnumType.STRING)
     private PassengerType passengerType;
 
@@ -110,9 +110,9 @@ public class Passenger implements Serializable{
         return age;
     }
 
-    @PostLoad
-    @PostPersist
-    @PostUpdate
+    //@PostLoad
+    //@PostPersist
+    //@PostUpdate
     private void setAge()
     {
         this.age = calculateAge(this.dateOfBirth);
