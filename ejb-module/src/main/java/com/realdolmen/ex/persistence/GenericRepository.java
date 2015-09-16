@@ -1,16 +1,17 @@
 package com.realdolmen.ex.persistence;
 
+import com.realdolmen.ex.domain.AbstractEntity;
 import com.realdolmen.ex.persistence.interfaces.IGenericRepository;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@LocalBean
-public abstract class GenericRepository<T> implements IGenericRepository<T> {
+public abstract class GenericRepository<T extends AbstractEntity> implements IGenericRepository<T> {
 
     @PersistenceContext
     protected EntityManager entityManager;
@@ -49,14 +50,5 @@ public abstract class GenericRepository<T> implements IGenericRepository<T> {
         TypedQuery<T> query = entityManager.createQuery(queryString, persistentClass);
 
         return query.getResultList();
-    }
-
-    public boolean checkEntityManagerIsNull()
-    {
-        return entityManager != null;
-    }
-
-    public void setEntityManager(EntityManager entityMAnager) {
-        this.entityManager = entityMAnager;
     }
 }

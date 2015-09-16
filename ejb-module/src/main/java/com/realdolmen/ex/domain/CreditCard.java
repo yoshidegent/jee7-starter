@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by YDEAX41 on 10/09/2015.
  */
 @Embeddable
-public class CreditCard implements Serializable {
+public class CreditCard extends AbstractEntity {
     private String number;
     private String expireDate;
     private Integer controlNumber;

@@ -8,9 +8,9 @@ import java.util.Date;
  * Created by YDEAX41 on 10/09/2015.
  */
 @Entity
-public abstract class Flight extends AbstractEntity implements Serializable{
+public abstract class Flight extends AbstractEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String number;
     @Temporal(TemporalType.TIMESTAMP)

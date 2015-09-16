@@ -12,7 +12,7 @@ import java.util.List;
  * Created by YDEAX41 on 9/09/2015.
  */
 @Entity
-public class Passenger implements Serializable{
+public class Passenger extends AbstractEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by YDEAX41 on 10/09/2015.
  */
 @Embeddable
-public class Address implements Serializable {
+public class Address extends AbstractEntity {
     private String street1;
     private String street2;
     private String city;
