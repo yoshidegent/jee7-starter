@@ -12,24 +12,24 @@
     <ui:composition>
         <div class="container-fluid">
             <div class="header-panel"><h1>Passengers</h1></div>
-            <h:dataTable id="passengers" value="#{passengerController.passengerList}" var="passenger">
+            <h:dataTable id="passengers" value="#{passengerConversationController.passengerList}" var="passengerDB">
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="ID"/>
                     </f:facet>
-                    <h:outputText value="#{passenger.id}"/>
+                    <h:outputText value="#{passengerDB.id}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="First name"/>
                     </f:facet>
-                    <h:outputText value="#{passenger.firstName}"/>
+                    <h:outputText value="#{passengerDB.firstName}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Last name"/>
                     </f:facet>
-                    <h:outputText value="#{passenger.lastName}"/>
+                    <h:outputText value="#{passengerDB.lastName}"/>
                 </h:column>
             </h:dataTable>
             <h:link value="Create new passenger" outcome="createpassenger" />
