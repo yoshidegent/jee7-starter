@@ -11,11 +11,13 @@
     <h1>Create passenger</h1>
     <h:form>
         <h:outputLabel value="SSN"/>
-        <h:inputText value="#{passengerConversationController.passenger.ssn}"/><br/>
+        <h:inputText value="#{passengerConversationController.passenger.ssn}"/><h:message for="#{passengerConversationController.passenger.ssn}" /><br/>
         <h:outputLabel value="First name"/>
-        <h:inputText value="#{passengerConversationController.passenger.firstName}"/><br/>
+        <h:inputText value="#{passengerConversationController.passenger.firstName}"/><h:message for="#{passengerConversationController.passenger.firstName}" /><br/>
         <h:outputLabel value="Last name"/>
-        <h:inputText value="#{passengerConversationController.passenger.lastName}"/><br/>
+        <h:inputText value="#{passengerConversationController.passenger.lastName}"/><h:message for="#{passengerConversationController.passenger.lastName}" /><br/>
+        <h:outputLabel value="Email"/>
+        <h:inputText value="#{passengerConversationController.passenger.lastName}"/><h:message for="#{passengerConversationController.passenger.email}" /><br/>
         <h:commandButton value="Create passenger" action="#{passengerConversationController.passengerInfoEntry}"/>
     </h:form>
 </h:body>

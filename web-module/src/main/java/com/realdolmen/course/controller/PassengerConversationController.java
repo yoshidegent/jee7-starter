@@ -42,7 +42,7 @@ public class PassengerConversationController implements Serializable{
         return "confirmpassenger";
     }
 
-    public String navigateToAllPassengersPage()
+    public String navigateToAllPassengersPageAndCreate()
     {
         com.realdolmen.ex.domain.Passenger passengerDB = new com.realdolmen.ex.domain.Passenger();
         passengerDB.setSsn(passenger.getSsn());
@@ -55,7 +55,7 @@ public class PassengerConversationController implements Serializable{
         passengerDB = passengerEJB.createPassenger(passengerDB);
         passengerList = passengerEJB.findPassengers();
 
-        conversation.end();
+        //conversation.end();
         return "allpassengers";
     }
 
@@ -73,5 +73,19 @@ public class PassengerConversationController implements Serializable{
 
     public void setPassengerList(List<com.realdolmen.ex.domain.Passenger> passengerList) {
         this.passengerList = passengerList;
+    }
+
+    public String navigateToAllPassengers()
+    {
+        passengerList = passengerEJB.findPassengers();
+        return "allpassengers";
+    }
+
+    public void removePassenger(long id)
+    {
+        com.realdolmen.ex.domain.Passenger passenger = passengerEJB.findPassenger(id);
+
+        if(passenger != null)
+            passengerEJB.deletePassenger(passenger);
     }
 }
