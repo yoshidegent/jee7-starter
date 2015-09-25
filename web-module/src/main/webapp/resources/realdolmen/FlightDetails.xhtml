@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <meta charset="UTF-8"/>
-    <title>REALDOLMEN</title>
-</h:head>
-<h:body>
-    <h1>REALDOLMEN</h1>
-    <p>Passenger <h:outputText value="#{ticketController.ticket.id}: #{ticketController.ticket.price}" /></p>
-</h:body>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+<cc:interface>
+    <cc:attribute name="flightId" required="true"/>
+</cc:interface>
+<cc:implementation>
+        <h1>REALDOLMEN</h1>
+        <h:outputText value="Flight ID: #{flightController.flight.id}" />
+</cc:implementation>
 </html>

@@ -17,7 +17,6 @@ import java.util.Date;
  */
 public class PassengerRepositoryCrudTest extends DataSetPersistenceTest
 {
-
     private PassengerRepository passengerRepository;
     private Passenger passenger;
 
